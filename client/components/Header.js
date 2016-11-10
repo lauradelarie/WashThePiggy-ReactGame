@@ -51,7 +51,7 @@ class Header extends Component {
     return (
 
       <AppBar
-        title="MemoryGame"
+        title="Wash the Piggy!"
         iconElementLeft={ <IconButton onClick={ this.navigateHome }><ActionHome /></IconButton> }
         iconElementRight={ this.renderMenu() }
       />
