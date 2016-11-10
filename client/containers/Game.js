@@ -45,7 +45,7 @@ class Game extends Component {
   }
 
   render() {
-    const { game } = this.props
+    const { game, currentUser } = this.props
     if (!!!game._id) { return null }
 
 
@@ -67,7 +67,7 @@ class Game extends Component {
           { game.players.map((player) => player.name) }
           { game.spots.map((spot) =>
             spot.cleaned === false ?
-              <Spot key={ spot._id } spot={ spot } game={ game } />
+              <Spot key={ spot._id } spot={ spot } game={ game } currentUser={ currentUser } />
           : null )}
       </div>
     )
