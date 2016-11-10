@@ -9,7 +9,8 @@ export default (game, properties = {}, reset = false) => {
         model.save(game, properties, reset)
       }).catch((error) => {
         console.error(error)
-        dispatch(signOutUser())
+        return state
+        // dispatch(signOutUser())
       })
   }
 }
