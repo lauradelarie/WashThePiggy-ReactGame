@@ -48,6 +48,7 @@ class Game extends Component {
     const { game } = this.props
     if (!!!game._id) { return null }
 
+
     if (this.canJoin()) {
       return (
         <Paper zDepth={3} className="join-game">
@@ -70,6 +71,7 @@ class Game extends Component {
           : null )}
       </div>
     )
+
   }
 }
 

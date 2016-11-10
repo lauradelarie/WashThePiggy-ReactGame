@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
+import './Spot.sass'
 import saveGame from '../actions/update-game'
 
 export class Spot extends Component {
@@ -20,7 +20,7 @@ cleanSpot() {
     const { spot, game } = this.props
 
     return(
-      <li>
+      <li className="spot">
       <button onClick={ this.cleanSpot.bind(this) }>{ spot.spot }</button>
     </li>
     )
