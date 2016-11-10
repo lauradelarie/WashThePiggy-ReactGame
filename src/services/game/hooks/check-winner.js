@@ -16,6 +16,7 @@ module.exports = function(options) {
     const players = hook.data.players;
 
     const cleanedSpots = spots.filter((spot) => (spot.cleaned))
-
+    debugger
+    players[0].cleanedSpots.push(cleanedSpots[0])
   };
 };

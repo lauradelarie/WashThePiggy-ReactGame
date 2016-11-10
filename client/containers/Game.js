@@ -48,6 +48,7 @@ class Game extends Component {
     const { game } = this.props
     if (!!!game._id) { return null }
 
+
     if (this.canJoin()) {
       return (
         <Paper zDepth={3} className="join-game">
@@ -61,8 +62,8 @@ class Game extends Component {
 
     return(
       <div className="game">
-          <p>Is player: { this.isPlayer() ? 'Yes' : 'No' }</p>
-          <p>Can join: { this.canJoin() ? 'Yes' : 'No' }</p>
+          {/* <p>Is player: { this.isPlayer() ? 'Yes' : 'No' }</p>
+          <p>Can join: { this.canJoin() ? 'Yes' : 'No' }</p> */}
           { game.players.map((player) => player.name) }
           { game.spots.map((spot) =>
             spot.cleaned === false ?
@@ -70,6 +71,7 @@ class Game extends Component {
           : null )}
       </div>
     )
+
   }
 }
 
