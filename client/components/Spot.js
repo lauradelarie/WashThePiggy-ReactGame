@@ -5,7 +5,6 @@ import saveGame from '../actions/update-game'
 
 export class Spot extends Component {
 
-
 cleanSpot() {
   const { game, spot, saveGame } = this.props
   console.log("THIS.PROPS:", this.props )
@@ -14,11 +13,8 @@ cleanSpot() {
   console.log("ACTIVE SPOT ID:", this.props.spot._id)
   console.log("ANY SPOT ID:", this.props.game.spots)
 
-
   saveGame(game, { spot: spot.cleaned = true }
   )}
-
-
 
   render() {
     const { spot, game } = this.props
@@ -29,6 +25,5 @@ cleanSpot() {
     </li>
     )
   }
-
 }
 export default connect(null, { saveGame })(Spot)
