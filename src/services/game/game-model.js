@@ -8,20 +8,21 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const cardSchema = new Schema({
-  symbol: { type: String, required: true },
-  flipped: { type: Boolean, required: true, 'default': false },
+const spotSchema = new Schema({
+  spot: { type: String, required: true },
+  cleaned: { type: Boolean, required: true, 'default': false },
 });
 
 const playerSchema = new Schema({
   userId: { type: Schema.Types.ObjectId, ref: 'user' },
   color: { type: String, required: false },
   name: { type: String, required: true },
-  pairs: [String]
+  cleanedSpots: [String]
+  // could also make this into a number instead, and every time we click on the spot you just get plus one.
 });
 
 const gameSchema = new Schema({
-  cards: [cardSchema],
+  spots: [spotSchema],
   players: [playerSchema],
   started: { type: Boolean, required: true, 'default': false },
   winner: { type: Number, required: false },

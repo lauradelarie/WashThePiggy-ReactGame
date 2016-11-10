@@ -36,17 +36,17 @@ module.exports = function(options) {
     // Assign the logged in user as the creator of the game
     hook.data.userId = user._id;
 
-    // Set up the set of cards and shuffle them
-    const symbols = shuffle('✿★♦✵♣♠♥⚛'.repeat(2).split(''))
-    hook.data.cards = symbols
-      .map((symbol) => ({ flipped: false, symbol: symbol }))
+    // Set up the spots and shuffle them
+    const spots = shuffle('✿★♦✵♣♠♥⚛'.repeat(2).split(''))
+    hook.data.spots = spots
+      .map((spot) => ({ cleaned: false, spot: spot }))
 
     // Add the logged in user as the first player
     hook.data.players = [{
       userId: user._id,
       name: user.name,
       color: '#f00',
-      pairs: []
+      cleanedSpots: []
     }];
 
   };

@@ -4,7 +4,7 @@ import feathers from 'feathers-client'
 class GameModel extends BaseModel {
   defaults() {
     return {
-      cards: [],
+      spots: [],
       players: [],
       started: false,
       winner: null,
