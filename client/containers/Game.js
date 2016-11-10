@@ -65,7 +65,7 @@ class Game extends Component {
           <p>Can join: { this.canJoin() ? 'Yes' : 'No' }</p>
           { game.players.map((player) => player.name) }
           { game.spots.map((spot) =>
-            <Spot key={ spot._id } label={ spot.spot } />
+            <Spot key={ spot._id } spot={ spot } />
           )}
       </div>
     )

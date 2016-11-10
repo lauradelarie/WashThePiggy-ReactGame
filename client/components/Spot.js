@@ -1,12 +1,22 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-class Spot extends Component {
+export class Spot extends Component {
+
+cleanSpot() {
+  const { spot } = this.props
+
+  console.log("CONSOLE:", spot._id)
+}
+
   render() {
-    const { label } = this.props
+    const { spot } = this.props
 
     return(
-      <h1>{ label }</h1>
+      <li>
+      <button onClick={ this.cleanSpot.bind(this) }>{ spot.spot }</button>
+    </li>
     )
   }
 }
-export default Spot
+export default connect(null, {})(Spot)
