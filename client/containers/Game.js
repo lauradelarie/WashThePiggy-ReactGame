@@ -1,12 +1,18 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
+
+import Spot from '../components/Spot'
+
 import setUpGames from '../actions/setup-games'
 import setGameId from '../actions/set-current-game'
+import cleanSpot from '../actions/clean-spot'
+import saveGame from '../actions/update-game'
+
 import Paper from 'material-ui/Paper'
 import RaisedButton from 'material-ui/RaisedButton'
 import FlatButton from 'material-ui/FlatButton'
-import saveGame from '../actions/update-game'
+
 import './Game.sass'
 
 const PLAYER_COLORS = ['#0f0', '#00f']
@@ -55,9 +61,12 @@ class Game extends Component {
 
     return(
       <div className="game">
-        <p>Is player: { this.isPlayer() ? 'Yes' : 'No' }</p>
-        <p>Can join: { this.canJoin() ? 'Yes' : 'No' }</p>
-        { game.players.map((player) => player.name) }
+          <p>Is player: { this.isPlayer() ? 'Yes' : 'No' }</p>
+          <p>Can join: { this.canJoin() ? 'Yes' : 'No' }</p>
+          { game.players.map((player) => player.name) }
+          { game.spots.map((spot) =>
+            <Spot key={ spot._id } label={ spot.spot } />
+          )}
       </div>
     )
   }
@@ -77,4 +86,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { setUpGames, setGameId, saveGame })(Game)
+export default connect(mapStateToProps, { setUpGames, setGameId, saveGame, cleanSpot })(Game)
