@@ -28,8 +28,8 @@ export class Spot extends Component {
 
     return(
       <div className="spot">
-      <button onClick={ this.cleanSpot.bind(this) }>{ spot.spot }</button>
-    </div>
+        <img onClick={ this.cleanSpot.bind(this) } style={{width: 50, height: 50}} src={`${ spot.spot }`}></img>
+      </div>
     )
   }
 }

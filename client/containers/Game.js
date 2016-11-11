@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router'
 
 import Spot from '../components/Spot'
+import Timer from '../components/Timer'
 
 import setUpGames from '../actions/setup-games'
 import setGameId from '../actions/set-current-game'
@@ -69,6 +70,7 @@ class Game extends Component {
             spot.cleaned === false ?
               <Spot key={ spot._id } spot={ spot } game={ game } currentUser={ currentUser } />
           : null )}
+          <Timer />
       </div>
     )
 
