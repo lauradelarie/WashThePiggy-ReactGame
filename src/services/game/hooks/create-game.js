@@ -37,8 +37,21 @@ module.exports = function(options) {
     hook.data.userId = user._id;
 
     // Set up the spots and shuffle them
-    const spots = shuffle('✿★♦✵♣♠♥⚛'.repeat(2).split(''))
-    hook.data.spots = spots
+    const spots = ["http://www.clker.com/cliparts/R/F/r/c/n/e/black-splat-hi.png",
+    "https://d30y9cdsu7xlg0.cloudfront.net/png/137806-200.png",
+    "http://www.clker.com/cliparts/R/F/r/c/n/e/black-splat-hi.png",
+    "http://www.clker.com/cliparts/R/F/r/c/n/e/black-splat-hi.png",
+    "http://www.clker.com/cliparts/R/F/r/c/n/e/black-splat-hi.png",
+    "http://www.clker.com/cliparts/R/F/r/c/n/e/black-splat-hi.png",
+    "https://d30y9cdsu7xlg0.cloudfront.net/png/137806-200.png",
+    "http://www.clker.com/cliparts/R/F/r/c/n/e/black-splat-hi.png",
+    "http://www.clker.com/cliparts/R/F/r/c/n/e/black-splat-hi.png",
+    "http://www.clker.com/cliparts/R/F/r/c/n/e/black-splat-hi.png",
+    "https://d30y9cdsu7xlg0.cloudfront.net/png/137806-200.png",
+    "http://www.clker.com/cliparts/R/F/r/c/n/e/black-splat-hi.png",
+    "http://www.clker.com/cliparts/R/F/r/c/n/e/black-splat-hi.png",
+    "http://www.clker.com/cliparts/R/F/r/c/n/e/black-splat-hi.png"]
+      hook.data.spots = spots
       .map((spot) => ({ cleaned: false, spot: spot }))
 
     // Add the logged in user as the first player
