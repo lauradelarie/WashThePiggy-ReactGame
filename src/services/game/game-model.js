@@ -30,7 +30,8 @@ const gameSchema = new Schema({
   createdAt: { type: Date, 'default': Date.now },
   updatedAt: { type: Date, 'default': Date.now },
   userId: { type: Schema.Types.ObjectId, ref: 'user' },
-  draw: { type: Boolean, required: false }
+  draw: { type: Boolean, required: false },
+  timer: { type: Number }
 });
 
 const gameModel = mongoose.model('game', gameSchema);

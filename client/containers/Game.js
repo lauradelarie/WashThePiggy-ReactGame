@@ -66,11 +66,11 @@ class Game extends Component {
           {/* <p>Is player: { this.isPlayer() ? 'Yes' : 'No' }</p>
           <p>Can join: { this.canJoin() ? 'Yes' : 'No' }</p> */}
           { game.players.map((player) => player.name) }
-          { game.spots.map((spot) =>
-            spot.cleaned === false ?
-              <Spot key={ spot._id } spot={ spot } game={ game } currentUser={ currentUser } />
-          : null )}
-          <Timer />
+            { game.spots.map((spot) =>
+              spot.cleaned === false ?
+                <Spot key={ spot._id } spot={ spot } game={ game } currentUser={ currentUser } />
+            : null )}
+          <Timer game={ game } />
       </div>
     )
 

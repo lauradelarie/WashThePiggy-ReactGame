@@ -12,6 +12,7 @@ class GameModel extends BaseModel {
       createdAt: Date.now,
       updatedAt: Date.now,
       draw: false,
+      timer: 10,
     };
   }
 
