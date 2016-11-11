@@ -54,11 +54,17 @@ export class Timer extends Component {
 
   checkWinner(){
     const { game, saveGame } = this.props
-    console.log(game)
-    console.log(game.players[0])
-    console.log(game.winner[0])
-    if (game.players[0].cleanedSpots.length > game.players[1].cleanedSpots.length) {  saveGame(game, { winner: game.winner.push(game.players[0]) })}
-    else {saveGame(game, { winner: game.winner.push(game.players[1]) })}
+    console.log("GAME:", game)
+    console.log("PLAYER_0: ", game.players[0])
+    console.log("NAME_PLAYER_0: ", game.players[0].name)
+
+
+    if (game.players[0].cleanedSpots.length > game.players[1].cleanedSpots.length) {
+      saveGame(game, { winner: [game.players[0].name] })
+    } else {
+      saveGame(game, { winner: [game.players[1].name] })
+    }
+    console.log("WINNER: ", game.winner[0])
   }
 
   render() {
@@ -68,8 +74,8 @@ export class Timer extends Component {
         <h1>Timer</h1>
         <p>{ this.state.timerValue }</p>
         <button onClick={this.beforeGameCountdown.bind(this)}>SetTimer</button>
-        {/* { game.ended === true ?
-            <p> { game.winner } </p>: null} */}
+        { game.ended === true ?
+            <p> { game.winner } </p> : null}
       </div>
     )
   }
