@@ -1,37 +1,66 @@
 import React, { Component } from 'react'
+import saveGame from '../actions/update-game'
+import { connect } from 'react-redux'
+
 
 export class Timer extends Component {
-
-  setTimer() {
-    debugger
-  const timerArray = ['10', '9', '8', '7', '6', '5', '4', '3', '2', '1', '0']
-
-    timerArray.map((item) => {
-      console.log("NUMBER: ", item)
-        this.sleep(1000)
-    })
-  }
-
-  sleep(milliseconds) {
-    let start = new Date().getTime()
-    for (let i = 0; i < 1e7; i++) {
-      if ((new Date().getTime() - start) > milliseconds){
-        break;
-      }
+  constructor() {
+    super()
+    this.state = {
+      timerValue: 'Waiting to start...'
     }
   }
 
+  beforeGameCountdown(){
+    const { game, saveGame } = this.props
+    const timerArray = ['3', '2', '1', 'Time\'s Up!']
+
+    this.tickTimer(timerArray, this.setTimer.bind(this))
+  }
+
+  startGame() {
+    const { game, saveGame } = this.props
+    saveGame(game, { started: true })
+  }
+
+  stopGame() {
+    const { game, saveGame } = this.props
+    saveGame(game, { started: false })
+  }
+
+  setTimer() {
+    this.startGame(true)
+
+    let timerArray = ['10', '9', '8', '7', '6', '5', '4', '3', '2', '1', 'Time\'s Up!']
+    this.tickTimer(timerArray, this.stopGame.bind(this))
+  }
+
+  tickTimer(timerArray, cb) {
+    const timerValue = timerArray.shift()
+    console.log("COUNTDOWN: ", timerValue)
+
+    this.setState({
+      timerValue
+    })
+
+    if (timerArray.length === 0) { return cb() }
+
+    setTimeout(() => {
+      this.tickTimer(timerArray, cb)
+    }, 1000)
+  }
 
   render() {
 
     return(
       <div className="timer">
         <h1>Timer</h1>
-        <button onClick={this.setTimer.bind(this)}>SetTimer</button>
+        <p>{ this.state.timerValue }</p>
+        <button onClick={this.beforeGameCountdown.bind(this)}>SetTimer</button>
       </div>
     )
   }
 
 }
 
-export default Timer
+export default connect(null, { saveGame })(Timer)
