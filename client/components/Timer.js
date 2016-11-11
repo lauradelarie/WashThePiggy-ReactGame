@@ -13,7 +13,7 @@ export class Timer extends Component {
 
   beforeGameCountdown(){
     const { game, saveGame } = this.props
-    const timerArray = ['Wash that Piggy!', '']
+    const timerArray = ['Ready?', 'Set..', 'Wash that Piggy!', '']
 
     this.tickTimer(timerArray, this.setTimer.bind(this))
   }
@@ -26,45 +26,41 @@ export class Timer extends Component {
   stopGame() {
     const { game, saveGame } = this.props
     saveGame(game, { ended: true })
-    // saveGame(game, { started: false })
-    this.checkWinner()
   }
 
   setTimer() {
     this.startGame(true)
 
-    let timerArray = ['', '1', 'Time\'s Up!']
+    let timerArray = ['', '1', '2', '3', 'Time\'s Up!']
     this.tickTimer(timerArray, this.stopGame.bind(this))
+
   }
 
   tickTimer(timerArray, cb) {
     const timerValue = timerArray.shift()
-    console.log("COUNTDOWN: ", timerValue)
 
     this.setState({
       timerValue
     })
 
     if (timerArray.length === 0) { return cb() }
-
+        this.checkWinner()
     setTimeout(() => {
       this.tickTimer(timerArray, cb)
     }, 1500)
   }
 
   checkWinner(){
-    const { game, saveGame } = this.props
-    console.log("GAME:", game)
-    console.log("PLAYER_0: ", game.players[0])
-    console.log("NAME_PLAYER_0: ", game.players[0].name)
 
+    const { game, saveGame } = this.props
 
     if (game.players[0].cleanedSpots.length > game.players[1].cleanedSpots.length) {
       saveGame(game, { winner: [game.players[0].name] })
+    } else if (game.players[0].cleanedSpots.length = game.players[1].cleanedSpots.length) {
+      saveGame(game, { winner: [game.players[0].name, game.players[1].name] })
     } else {
       saveGame(game, { winner: [game.players[1].name] })
     }
-    console.log("WINNER: ", game.winner[0])
   }
 
   render() {
@@ -75,7 +71,7 @@ export class Timer extends Component {
         <p>{ this.state.timerValue }</p>
         <button onClick={this.beforeGameCountdown.bind(this)}>SetTimer</button>
         { game.ended === true ?
-            <p> { game.winner } </p> : null}
+            <p> THE WINNER IS: { game.winner } </p> : null }
       </div>
     )
   }
