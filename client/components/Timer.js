@@ -3,29 +3,25 @@ import React, { Component } from 'react'
 export class Timer extends Component {
 
   setTimer() {
-    const { timer } = this.props
-    let d = new Date()
-    // let n = d.getTime()
-    console.log("Timer: ", d )
+    debugger
+  const timerArray = ['10', '9', '8', '7', '6', '5', '4', '3', '2', '1', '0']
+
+    timerArray.map((item) => {
+      console.log("NUMBER: ", item)
+        this.sleep(1000)
+    })
   }
 
-  // onclick={ this.startTimer.bind(this)}
-  //
-  // funtion startTimer() {
-  //   let timer =  setInterval(function, interval between executions of     function in milliseconds)
-  //   function {
-  //   counter = 10
-  //   counter - 1
-  //   return counter
-  //   }
-  //     if counter = 0
-  //     stopTimer()
-  // }
-  //
-  // stopTimer() {
-  //   clearInterval(timer);
-  // }
-  //
+  sleep(milliseconds) {
+    let start = new Date().getTime()
+    for (let i = 0; i < 1e7; i++) {
+      if ((new Date().getTime() - start) > milliseconds){
+        break;
+      }
+    }
+  }
+
+
   render() {
 
     return(
@@ -35,6 +31,7 @@ export class Timer extends Component {
       </div>
     )
   }
+
 }
 
 export default Timer
