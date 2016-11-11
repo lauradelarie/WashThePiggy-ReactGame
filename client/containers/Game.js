@@ -62,18 +62,23 @@ class Game extends Component {
     }
 
     return(
-      <div className="game">
-          {/* <p>Is player: { this.isPlayer() ? 'Yes' : 'No' }</p>
-          <p>Can join: { this.canJoin() ? 'Yes' : 'No' }</p> */}
-          { game.players.map((player) => player.name) }
+      <div>
+        <div className="game-header">
+
+            {/* <p>Is player: { this.isPlayer() ? 'Yes' : 'No' }</p>
+            <p>Can join: { this.canJoin() ? 'Yes' : 'No' }</p> */}
+        </div>
+        <div className="game">
+        <img className="pigface" src="http://res.cloudinary.com/dsiyhc1tt/image/upload/v1478889307/Screen_Shot_2016-11-11_at_19.33.51_haecpa.png"></img>
+          <Timer className="timer" game={ game } />
             { game.spots.map((spot) =>
               spot.cleaned === false ?
                 <Spot key={ spot._id } spot={ spot } game={ game } currentUser={ currentUser } />
             : null )}
-          <Timer game={ game } />
+
+        </div>
       </div>
     )
-
   }
 }
 
