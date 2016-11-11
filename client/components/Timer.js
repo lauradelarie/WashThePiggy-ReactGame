@@ -2,30 +2,6 @@ import React, { Component } from 'react'
 
 export class Timer extends Component {
 
-  // setTimer() {
-  //   let d = new Date()
-  //   // let n = d.getTime()
-  //   console.log("Timer: ", d )
-  // }
-
-  // onclick={ this.startTimer.bind(this)}
-  //
-  // funtion startTimer() {
-  //   let timer =  setInterval(function, interval between executions of     function in milliseconds)
-  //   function {
-  //   counter = 10
-  //   counter - 1
-  //   return counter
-  //   }
-  //     if counter = 0
-  //     stopTimer()
-  // }
-  //
-  // stopTimer() {
-  //   clearInterval(timer);
-  // }
-  //
-
   setTimer() {
     debugger
   const timerArray = ['10', '9', '8', '7', '6', '5', '4', '3', '2', '1', '0']
