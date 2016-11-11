@@ -13,7 +13,7 @@ export class Timer extends Component {
 
   beforeGameCountdown(){
     const { game, saveGame } = this.props
-    const timerArray = ['3', '2', '1', 'Time\'s Up!']
+    const timerArray = ['Ready...', 'Set...', 'Clean that Piggy!', '']
 
     this.tickTimer(timerArray, this.setTimer.bind(this))
   }
@@ -31,7 +31,7 @@ export class Timer extends Component {
   setTimer() {
     this.startGame(true)
 
-    let timerArray = ['10', '9', '8', '7', '6', '5', '4', '3', '2', '1', 'Time\'s Up!']
+    let timerArray = ['', '10', '9', '8', '7', '6', '5', '4', '3', '2', '1', 'Time\'s Up!']
     this.tickTimer(timerArray, this.stopGame.bind(this))
   }
 
@@ -47,7 +47,7 @@ export class Timer extends Component {
 
     setTimeout(() => {
       this.tickTimer(timerArray, cb)
-    }, 1000)
+    }, 1500)
   }
 
   render() {
