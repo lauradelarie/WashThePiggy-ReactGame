@@ -23,6 +23,8 @@ export class Spot extends Component {
 
   }
 
+
+
   render() {
     const { spot, game, currentUser } = this.props
 
