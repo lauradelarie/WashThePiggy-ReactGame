@@ -13,7 +13,7 @@ export class Timer extends Component {
 
   beforeGameCountdown(){
     const { game, saveGame } = this.props
-    const timerArray = ['Ready...', 'Set...', 'Wash that Piggy!', '']
+    const timerArray = ['Wash that Piggy!', '']
 
     this.tickTimer(timerArray, this.setTimer.bind(this))
   }
@@ -25,13 +25,15 @@ export class Timer extends Component {
 
   stopGame() {
     const { game, saveGame } = this.props
-    saveGame(game, { started: false })
+    saveGame(game, { ended: true })
+    // saveGame(game, { started: false })
+    this.checkWinner()
   }
 
   setTimer() {
     this.startGame(true)
 
-    let timerArray = ['', '10', '9', '8', '7', '6', '5', '4', '3', '2', '1', 'Time\'s Up!']
+    let timerArray = ['', '1', 'Time\'s Up!']
     this.tickTimer(timerArray, this.stopGame.bind(this))
   }
 
@@ -50,13 +52,24 @@ export class Timer extends Component {
     }, 1500)
   }
 
-  render() {
+  checkWinner(){
+    const { game, saveGame } = this.props
+    console.log(game)
+    console.log(game.players[0])
+    console.log(game.winner[0])
+    if (game.players[0].cleanedSpots.length > game.players[1].cleanedSpots.length) {  saveGame(game, { winner: game.winner.push(game.players[0]) })}
+    else {saveGame(game, { winner: game.winner.push(game.players[1]) })}
+  }
 
+  render() {
+    const { game } = this.props
     return(
       <div className="timer">
         <h1>Timer</h1>
         <p>{ this.state.timerValue }</p>
         <button onClick={this.beforeGameCountdown.bind(this)}>SetTimer</button>
+        {/* { game.ended === true ?
+            <p> { game.winner } </p>: null} */}
       </div>
     )
   }
