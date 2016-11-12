@@ -133,25 +133,28 @@ class Game extends Component {
     if (game.ended === false) {
       return(
         <div>
-          <div className="game-header">
 
-              {/* <p>Is player: { this.isPlayer() ? 'Yes' : 'No' }</p>
-              <p>Can join: { this.canJoin() ? 'Yes' : 'No' }</p> */}
-          </div>
           <div className="game">
-          <img className="pigface" src="http://res.cloudinary.com/dsiyhc1tt/image/upload/v1478889307/Screen_Shot_2016-11-11_at_19.33.51_haecpa.png"></img>
 
-            <div className="timer">
-              <h1>Timer</h1>
-                <p>{ this.state.timerValue }</p>
-                <button onClick={this.beforeGameCountdown.bind(this)}>SetTimer</button>
-            </div>
+            <div className="background">
+              {/* <img className="pigface" src="http://res.cloudinary.com/dsiyhc1tt/image/upload/v1478960301/Draw-a-Pig-Step-14_gssn3r.png"></img> */}
 
 
-              {game.spots.map((spot) =>
-                spot.cleaned === false && game.started === true  ?
-                  <Spot key={ spot._id } spot={ spot } game={ game } currentUser={ currentUser } />
-                : null ) }
+              <div className="spots">
+                {game.spots.map((spot) =>
+                  spot.cleaned === false && game.started === true  ?
+                    <span><Spot className='spot' key={ spot._id } spot={ spot } game={ game } currentUser={ currentUser } /></span>
+                  : null ) }
+              </div>
+
+              <div className="timer">
+                <h2>Timer</h2>
+                  <p>{ this.state.timerValue }</p>
+                  <button onClick={this.beforeGameCountdown.bind(this)}>SetTimer</button>
+              </div>
+
+
+              </div>
           </div>
         </div>
       )
