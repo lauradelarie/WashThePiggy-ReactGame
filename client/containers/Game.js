@@ -130,32 +130,41 @@ class Game extends Component {
       )
     }
 
-    return(
-      <div>
-        <div className="game-header">
+    if (game.ended === false) {
+      return(
+        <div>
+          <div className="game-header">
 
-            {/* <p>Is player: { this.isPlayer() ? 'Yes' : 'No' }</p>
-            <p>Can join: { this.canJoin() ? 'Yes' : 'No' }</p> */}
+              {/* <p>Is player: { this.isPlayer() ? 'Yes' : 'No' }</p>
+              <p>Can join: { this.canJoin() ? 'Yes' : 'No' }</p> */}
+          </div>
+          <div className="game">
+          <img className="pigface" src="http://res.cloudinary.com/dsiyhc1tt/image/upload/v1478889307/Screen_Shot_2016-11-11_at_19.33.51_haecpa.png"></img>
+
+            <div className="timer">
+              <h1>Timer</h1>
+                <p>{ this.state.timerValue }</p>
+                <button onClick={this.beforeGameCountdown.bind(this)}>SetTimer</button>
+            </div>
+
+
+              {game.spots.map((spot) =>
+                spot.cleaned === false && game.started === true  ?
+                  <Spot key={ spot._id } spot={ spot } game={ game } currentUser={ currentUser } />
+                : null ) }
+          </div>
         </div>
-        <div className="game">
-        <img className="pigface" src="http://res.cloudinary.com/dsiyhc1tt/image/upload/v1478889307/Screen_Shot_2016-11-11_at_19.33.51_haecpa.png"></img>
+      )
+    }
 
-        <div className="timer">
-          <h1>Timer</h1>
-            <p>{ this.state.timerValue }</p>
-            <button onClick={this.beforeGameCountdown.bind(this)}>SetTimer</button>
-            { game.ended === true ?
-            <p> THE WINNER IS: { game.winner } </p> : null }
+    if (game.ended === true) {
+      return(
+        <div>
+        <p> THE WINNER IS: { game.winner } </p>
+          <img className="piggy-roll" src="http://www.netanimations.net/Moving-animated-picture-of-pig-in-the-mud.gif"></img>
         </div>
-
-            {game.spots.map((spot) =>
-              spot.cleaned === false && game.started === true  ?
-                <Spot key={ spot._id } spot={ spot } game={ game } currentUser={ currentUser } />
-            : null )}
-
-        </div>
-      </div>
-    )
+      )
+    }
   }
 }
 
