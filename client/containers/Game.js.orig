@@ -134,15 +134,11 @@ class Game extends Component {
       return(
         <div>
 
+<<<<<<< HEAD
           <div className="game">
 
-(??)        <div className="timer">
-(??)          <h1>Timer</h1>
-(??)            <p>{ this.state.timerValue }</p>
-(??)            <button onClick={this.beforeGameCountdown.bind(this)}>SetTimer</button>
-(??)            { game.ended === true ?
-(??)            <p> THE WINNER IS: { game.winner } </p> : null }
-(??)        </div>
+            <div className="background">
+              {/* <img className="pigface" src="http://res.cloudinary.com/dsiyhc1tt/image/upload/v1478960301/Draw-a-Pig-Step-14_gssn3r.png"></img> */}
 
 
               <div className="spots">
@@ -157,6 +153,22 @@ class Game extends Component {
                   <p>{ this.state.timerValue }</p>
                   <button onClick={this.beforeGameCountdown.bind(this)}>SetTimer</button>
               </div>
+=======
+            {/* <p>Is player: { this.isPlayer() ? 'Yes' : 'No' }</p>
+            <p>Can join: { this.canJoin() ? 'Yes' : 'No' }</p> */}
+        </div>
+        <div className="game">
+        <img className="pigface" src="http://res.cloudinary.com/dsiyhc1tt/image/upload/v1478889307/Screen_Shot_2016-11-11_at_19.33.51_haecpa.png"></img>
+
+        <div className="timer">
+          <h1>Timer</h1>
+            <p>{ this.state.timerValue }</p>
+            <button onClick={this.beforeGameCountdown.bind(this)}>SetTimer</button>
+
+            { game.ended === true ?
+            <p> THE WINNER IS: { game.winner } </p> : null }
+        </div>
+>>>>>>> master
 
 
               </div>
