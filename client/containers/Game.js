@@ -24,6 +24,75 @@ class Game extends Component {
     this.props.setUpGames()
   }
 
+  // componentDidUpdate() {
+  //   const { game, state } = this.props
+  //   if (game.started === false)
+  //     {this.beforeGameCountdown()}
+  //     else {
+  //       return state
+  //     }
+  // }
+
+  constructor() {
+    super()
+    this.state = {
+      timerValue: 'Waiting to start...'
+    }
+  }
+
+  beforeGameCountdown(){
+    const { game, saveGame } = this.props
+    const timerArray = ['Ready?', 'Set..', 'Wash that Piggy!', '']
+
+    this.tickTimer(timerArray, this.setTimer.bind(this))
+  }
+
+  startGame() {
+    const { game, saveGame } = this.props
+    saveGame(game, { started: game.started = true })
+
+  }
+
+  stopGame() {
+    const { game, saveGame } = this.props
+      saveGame(game, { ended: true })
+  }
+
+  setTimer() {
+    this.startGame(true)
+
+    let timerArray = ['', '1', '2', '3', 'Time\'s Up!']
+    this.tickTimer(timerArray, this.stopGame.bind(this))
+
+  }
+
+  tickTimer(timerArray, cb) {
+    const timerValue = timerArray.shift()
+
+    this.setState({
+      timerValue
+    })
+
+    if (timerArray.length === 0) { return cb() }
+        this.checkWinner()
+    setTimeout(() => {
+      this.tickTimer(timerArray, cb)
+    }, 1500)
+  }
+
+  checkWinner(){
+
+    const { game, saveGame } = this.props
+
+    if (game.players[0].cleanedSpots.length > game.players[1].cleanedSpots.length) {
+      saveGame(game, { winner: [game.players[0].name] })
+    } else if (game.players[0].cleanedSpots.length = game.players[1].cleanedSpots.length) {
+      saveGame(game, { winner: [game.players[0].name, game.players[1].name] })
+    } else {
+      saveGame(game, { winner: [game.players[1].name] })
+    }
+  }
+
   isPlayer() {
     const { game, currentUser } = this.props
     return game.players.filter((player) =>
@@ -70,9 +139,17 @@ class Game extends Component {
         </div>
         <div className="game">
         <img className="pigface" src="http://res.cloudinary.com/dsiyhc1tt/image/upload/v1478889307/Screen_Shot_2016-11-11_at_19.33.51_haecpa.png"></img>
-          <Timer className="timer" game={ game } />
-            { game.spots.map((spot) =>
-              spot.cleaned === false ?
+
+        <div className="timer">
+          <h1>Timer</h1>
+            <p>{ this.state.timerValue }</p>
+            <button onClick={this.beforeGameCountdown.bind(this)}>SetTimer</button>
+            { game.ended === true ?
+            <p> THE WINNER IS: { game.winner } </p> : null }
+        </div>
+
+            {game.spots.map((spot) =>
+              spot.cleaned === false && game.started === true  ?
                 <Spot key={ spot._id } spot={ spot } game={ game } currentUser={ currentUser } />
             : null )}
 

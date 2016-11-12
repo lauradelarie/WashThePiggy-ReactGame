@@ -14,30 +14,21 @@ export class Timer extends Component {
   beforeGameCountdown(){
     const { game, saveGame } = this.props
     const timerArray = ['Ready?', 'Set..', 'Wash that Piggy!', '']
-      game.spots.map((spot) => {
-      saveGame(game, { cleaned: spot.cleaned = true})
-      })
+
     this.tickTimer(timerArray, this.setTimer.bind(this))
   }
 
   startGame() {
     const { game, saveGame } = this.props
     saveGame(game, { started: true })
-      game.spots.map((spot) => {
-        console.log("SPOT:", spot)
-        saveGame(spot, { cleaned: spot.cleaned = false})
-      })
-
   }
 
   stopGame() {
     const { game, saveGame } = this.props
       saveGame(game, { ended: true })
-      game.spots.map((spot) => {
-      saveGame(game, { cleaned: spot.cleaned = true})
-      })
+      }
 
-  }
+
 
   setTimer() {
     this.startGame(true)
