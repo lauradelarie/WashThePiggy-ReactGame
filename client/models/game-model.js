@@ -8,6 +8,7 @@ class GameModel extends BaseModel {
       players: [],
       started: false,
       ended: false,
+      timerStarted: false,
       winner: [],
       turn: 0,
       createdAt: Date.now,
