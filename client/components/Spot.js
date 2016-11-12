@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './Spot.sass'
 import saveGame from '../actions/update-game'
+import {GridList, GridTile} from 'material-ui/GridList';
+
 
 export class Spot extends Component {
   cleanSpot() {
@@ -30,7 +32,9 @@ export class Spot extends Component {
 
     return(
       <div className="spot">
-        <img onClick={ this.cleanSpot.bind(this) } style={{width: 60, height: 60}} src={`${ spot.spot }`}></img>
+        <GridTile>
+          <img onClick={ this.cleanSpot.bind(this) } style={{width: 60, height: 60}} src={`${ spot.spot }`}></img>
+        </GridTile>
       </div>
     )
   }

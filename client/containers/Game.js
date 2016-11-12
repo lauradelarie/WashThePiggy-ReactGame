@@ -13,6 +13,7 @@ import saveGame from '../actions/update-game'
 import Paper from 'material-ui/Paper'
 import RaisedButton from 'material-ui/RaisedButton'
 import FlatButton from 'material-ui/FlatButton'
+import {GridList, GridTile} from 'material-ui/GridList';
 
 import './Game.sass'
 
@@ -23,15 +24,6 @@ class Game extends Component {
     this.props.setGameId(this.props.routeParams.gameId)
     this.props.setUpGames()
   }
-
-  // componentDidUpdate() {
-  //   const { game, state } = this.props
-  //   if (game.started === false)
-  //     {this.beforeGameCountdown()}
-  //     else {
-  //       return state
-  //     }
-  // }
 
   constructor() {
     super()
@@ -116,6 +108,7 @@ class Game extends Component {
 
   render() {
     const { game, currentUser } = this.props
+
     if (!!!game._id) { return null }
 
 
@@ -132,11 +125,7 @@ class Game extends Component {
 
     return(
       <div>
-        <div className="game-header">
-
-            {/* <p>Is player: { this.isPlayer() ? 'Yes' : 'No' }</p>
-            <p>Can join: { this.canJoin() ? 'Yes' : 'No' }</p> */}
-        </div>
+        <div className="game-header"></div>
         <div className="game">
         <img className="pigface" src="http://res.cloudinary.com/dsiyhc1tt/image/upload/v1478889307/Screen_Shot_2016-11-11_at_19.33.51_haecpa.png"></img>
 
@@ -147,12 +136,14 @@ class Game extends Component {
             { game.ended === true ?
             <p> THE WINNER IS: { game.winner } </p> : null }
         </div>
-
+        <div className="spots">
             {game.spots.map((spot) =>
               spot.cleaned === false && game.started === true  ?
+              <GridList cellHeight={50}>
                 <Spot key={ spot._id } spot={ spot } game={ game } currentUser={ currentUser } />
-            : null )}
+              </GridList>: null )}
 
+          </div>
         </div>
       </div>
     )
