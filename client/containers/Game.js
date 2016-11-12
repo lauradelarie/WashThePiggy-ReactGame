@@ -26,11 +26,8 @@ class Game extends Component {
 
   // componentDidUpdate() {
   //   const { game, state } = this.props
-  //   if (game.started === false)
+  //   if (game.timerStarted === false)
   //     {this.beforeGameCountdown()}
-  //     else {
-  //       return state
-  //     }
   // }
 
   constructor() {
@@ -49,13 +46,14 @@ class Game extends Component {
 
   startGame() {
     const { game, saveGame } = this.props
-    saveGame(game, { started: game.started = true })
-
+    saveGame(game, { started: game.started = true,
+    timerStarted: game.timerStarted = true })
   }
 
   stopGame() {
     const { game, saveGame } = this.props
       saveGame(game, { ended: true })
+      this.checkWinner()
   }
 
   setTimer() {
@@ -74,7 +72,6 @@ class Game extends Component {
     })
 
     if (timerArray.length === 0) { return cb() }
-        this.checkWinner()
     setTimeout(() => {
       this.tickTimer(timerArray, cb)
     }, 1500)
@@ -107,11 +104,14 @@ class Game extends Component {
 
   joinGame() {
     const { game, saveGame, currentUser } = this.props
-    saveGame(game, { players: game.players.concat({
+    saveGame(game, {
+      // startTimer: game.
+      players: game.players.concat({
       userId: currentUser._id,
       name: currentUser.name,
       color: PLAYER_COLORS[game.players.length],
     })})
+    this.beforeGameCountdown()
   }
 
   render() {
@@ -144,6 +144,7 @@ class Game extends Component {
           <h1>Timer</h1>
             <p>{ this.state.timerValue }</p>
             <button onClick={this.beforeGameCountdown.bind(this)}>SetTimer</button>
+
             { game.ended === true ?
             <p> THE WINNER IS: { game.winner } </p> : null }
         </div>
