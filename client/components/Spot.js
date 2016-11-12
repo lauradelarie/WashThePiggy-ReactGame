@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import './Spot.sass'
+import './spot.sass'
 import saveGame from '../actions/update-game'
 
 export class Spot extends Component {
+
   cleanSpot() {
     const { game, cleanedSpots, currentUser, spot, saveGame } = this.props
     console.log("THIS.PROPS:", this.props )

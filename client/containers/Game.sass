@@ -6,17 +6,33 @@
   margin: auto
 
 .game
-  margin: 0
-  padding: 0
   display: block
+  min-height: 700px
+  min-width: 1200px
+  max-height: 700px
+  max-width: 1200px
+  // background-image: url(http://res.cloudinary.com/dsiyhc1tt/image/upload/v1478960301/Draw-a-Pig-Step-14_gssn3r.png)
+
   // background-color: #FFBEDB
+
 .spots
   background-image: url(http://res.cloudinary.com/dsiyhc1tt/image/upload/v1478960301/Draw-a-Pig-Step-14_gssn3r.png)
   background-size: contain
-  max-height: 900px
-  max-width: 1200px
+  min-height: 500px
+  min-width: 600px
+  max-height: 500px
+  max-width: 600px
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  margin-bottom: 350
+  padding-bottom: 500
+  padding-top: 500
+
+
 
 .spot
+
   // position: relative random(300)
 
 .pigface
@@ -37,12 +53,12 @@
   margin-top: 0
 
 .timer
-  border: 2px solid
-  border-color: #FF8EBB
+  // background-color: #FF8EBB
   padding: 10
-  position: absolute
+  position: fixed
   top: 55
   right: 8
+
 
 .piggy-roll
   position: relative

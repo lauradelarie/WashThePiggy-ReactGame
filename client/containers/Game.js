@@ -24,16 +24,10 @@ class Game extends Component {
     this.props.setUpGames()
   }
 
-  // componentDidUpdate() {
-  //   const { game, state } = this.props
-  //   if (game.timerStarted === false)
-  //     {this.beforeGameCountdown()}
-  // }
-
   constructor() {
     super()
     this.state = {
-      timerValue: 'Waiting to start...'
+      timerValue: 'Await the miracle of spots!'
     }
   }
 
@@ -52,14 +46,14 @@ class Game extends Component {
 
   stopGame() {
     const { game, saveGame } = this.props
-      saveGame(game, { ended: true })
+      saveGame(game, { ended: game.ended = true })
       this.checkWinner()
   }
 
   setTimer() {
     this.startGame(true)
 
-    let timerArray = ['', '1', '2', '3', 'Time\'s Up!']
+    let timerArray = ['5', '4', '3', '2', '1', 'Time\'s Up!']
     this.tickTimer(timerArray, this.stopGame.bind(this))
 
   }
@@ -83,7 +77,7 @@ class Game extends Component {
 
     if (game.players[0].cleanedSpots.length > game.players[1].cleanedSpots.length) {
       saveGame(game, { winner: [game.players[0].name] })
-    } else if (game.players[0].cleanedSpots.length = game.players[1].cleanedSpots.length) {
+    } else if (game.players[0].cleanedSpots.length === game.players[1].cleanedSpots.length) {
       saveGame(game, { winner: [game.players[0].name, game.players[1].name] })
     } else {
       saveGame(game, { winner: [game.players[1].name] })
@@ -105,7 +99,6 @@ class Game extends Component {
   joinGame() {
     const { game, saveGame, currentUser } = this.props
     saveGame(game, {
-      // startTimer: game.
       players: game.players.concat({
       userId: currentUser._id,
       name: currentUser.name,
@@ -113,69 +106,53 @@ class Game extends Component {
     })})
     this.beforeGameCountdown()
   }
-
+// RENDERING THE Game
   render() {
     const { game, currentUser } = this.props
     if (!!!game._id) { return null }
 
+      if (this.canJoin()) {
+        return (
+          <Paper zDepth={3} className="join-game">
+            <h3>Join this Game?</h3>
+            <p>Join { game.players.map((player) => player.name).join(' and ') } in this game.</p>
+            <RaisedButton label="Join" primary={true} onClick={ this.joinGame.bind(this) } />
+            <Link to="/"><FlatButton label="Back to the Lobby" /></Link>
+          </Paper>
+      )}
 
-    if (this.canJoin()) {
-      return (
-        <Paper zDepth={3} className="join-game">
-          <h3>Join this Game?</h3>
-          <p>Join { game.players.map((player) => player.name).join(' and ') } in this game.</p>
-          <RaisedButton label="Join" primary={true} onClick={ this.joinGame.bind(this) } />
-          <Link to="/"><FlatButton label="Back to the Lobby" /></Link>
-        </Paper>
-      )
-    }
-
-    if (game.ended === false) {
-      return(
-        <div>
-
-          <div className="game">
-
-(??)        <div className="timer">
-(??)          <h1>Timer</h1>
-(??)            <p>{ this.state.timerValue }</p>
-(??)            <button onClick={this.beforeGameCountdown.bind(this)}>SetTimer</button>
-(??)            { game.ended === true ?
-(??)            <p> THE WINNER IS: { game.winner } </p> : null }
-(??)        </div>
-
+        if (game.ended === false) {
+          return(
+            <div className="game">
+              {/* <img className="pigface" src="http://res.cloudinary.com/dsiyhc1tt/image/upload/v1478960301/Draw-a-Pig-Step-14_gssn3r.png"/> */}
+              <div className="timer">
+                 {/* <h1>Await the miracle of spots!</h1> */}
+                  <p>{ this.state.timerValue }</p>
+                    {/* <button onClick={this.beforeGameCountdown.bind(this)}>SetTimer</button> */}
+              </div>
 
               <div className="spots">
                 {game.spots.map((spot) =>
                   spot.cleaned === false && game.started === true  ?
-                    <span><Spot className='spot' key={ spot._id } spot={ spot } game={ game } currentUser={ currentUser } /></span>
-                  : null ) }
+                    <div><Spot className='spot' key={ spot._id } spot={ spot } game={ game } currentUser={ currentUser } /></div>
+                  : null )}
               </div>
 
-              <div className="timer">
-                <h2>Timer</h2>
-                  <p>{ this.state.timerValue }</p>
-                  <button onClick={this.beforeGameCountdown.bind(this)}>SetTimer</button>
-              </div>
+            </div>
+          )}
 
-
-              </div>
-          </div>
-        </div>
-      )
-    }
-
-    if (game.ended === true) {
-      return(
-        <div>
-        <p> THE WINNER IS: { game.winner } </p>
-          <img className="piggy-roll" src="http://www.netanimations.net/Moving-animated-picture-of-pig-in-the-mud.gif"></img>
-        </div>
-      )
-    }
+        if (game.ended === true) {
+          return(
+            <div>
+              <p> THE WINNER IS: { game.winner } </p>
+              <img className="piggy-roll" src="http://www.netanimations.net/Moving-animated-picture-of-pig-in-the-mud.gif"></img>
+            </div>
+          )
+        }
+      // closes render
   }
+// class end
 }
-
 Game.propTypes = {
   game: PropTypes.object.isRequired,
   currentUser: PropTypes.object.isRequired,
