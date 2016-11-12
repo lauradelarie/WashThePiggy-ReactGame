@@ -25,6 +25,15 @@ class Game extends Component {
     this.props.setUpGames()
   }
 
+<<<<<<< HEAD
+=======
+  // componentDidUpdate() {
+  //   const { game, state } = this.props
+  //   if (game.timerStarted === false)
+  //     {this.beforeGameCountdown()}
+  // }
+
+>>>>>>> master
   constructor() {
     super()
     this.state = {
@@ -126,11 +135,33 @@ class Game extends Component {
       )
     }
 
+<<<<<<< HEAD
     return(
       <div>
         <div className="game-header"></div>
         <div className="game">
         <img className="pigface" src="http://res.cloudinary.com/dsiyhc1tt/image/upload/v1478889307/Screen_Shot_2016-11-11_at_19.33.51_haecpa.png"></img>
+
+        <div className="timer">
+          <h1>Timer</h1>
+            <p>{ this.state.timerValue }</p>
+            <button onClick={this.beforeGameCountdown.bind(this)}>SetTimer</button>
+            { game.ended === true ?
+            <p> THE WINNER IS: { game.winner } </p> : null }
+        </div>
+        <div className="spots">
+            {game.spots.map((spot) =>
+              spot.cleaned === false && game.started === true  ?
+              <GridList cellHeight={50}>
+                <Spot key={ spot._id } spot={ spot } game={ game } currentUser={ currentUser } />
+              </GridList>: null )}
+
+=======
+    if (game.ended === false) {
+      return(
+        <div>
+
+          <div className="game">
 
 (??)        <div className="timer">
 (??)          <h1>Timer</h1>
@@ -139,12 +170,6 @@ class Game extends Component {
 (??)            { game.ended === true ?
 (??)            <p> THE WINNER IS: { game.winner } </p> : null }
 (??)        </div>
-        <div className="spots">
-            {game.spots.map((spot) =>
-              spot.cleaned === false && game.started === true  ?
-              <GridList cellHeight={50}>
-                <Spot key={ spot._id } spot={ spot } game={ game } currentUser={ currentUser } />
-              </GridList>: null )}
 
 
               <div className="spots">
@@ -162,6 +187,7 @@ class Game extends Component {
 
 
               </div>
+>>>>>>> master
           </div>
         </div>
       )
