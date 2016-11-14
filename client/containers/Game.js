@@ -123,32 +123,31 @@ class Game extends Component {
 
         if (game.ended === false) {
           return(
-            <div className="game">
-              {/* <img className="pigface" src="http://res.cloudinary.com/dsiyhc1tt/image/upload/v1478960301/Draw-a-Pig-Step-14_gssn3r.png"/> */}
+          <div className="gameAndTimer">
               <div className="timer">
-                 {/* <h1>Await the miracle of spots!</h1> */}
                   <p>{ this.state.timerValue }</p>
-                    {/* <button onClick={this.beforeGameCountdown.bind(this)}>SetTimer</button> */}
               </div>
 
-              <div className="spots">
-                {game.spots.map((spot) =>
-                  spot.cleaned === false && game.started === true  ?
-                    <div><Spot className='spot' key={ spot._id } spot={ spot } game={ game } currentUser={ currentUser } /></div>
-                  : null )}
+              <div className="game">
+                  <div className="spots">
+                    {game.spots.map((spot) =>
+                      spot.cleaned === false && game.started === true  ?
+                        <div><Spot className='spot' key={ spot._id } spot={ spot } game={ game } currentUser={ currentUser } /></div>
+                      : null )}
+                  </div>
               </div>
-
             </div>
           )}
 
         if (game.ended === true) {
           return(
-            <div>
-              <p> THE WINNER IS: { game.winner } </p>
+            <div className="winner">
+              <p> { game.winner } is the best piggy washer! </p>
               <img className="piggy-roll" src="http://www.netanimations.net/Moving-animated-picture-of-pig-in-the-mud.gif"></img>
             </div>
           )
         }
+
       // closes render
   }
 // class end

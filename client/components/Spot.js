@@ -23,7 +23,10 @@ export class Spot extends Component {
     saveGame(game, { cleanedSpots: player[0].cleanedSpots.push(spot) })
 
   }
-
+  componentDidMount(){
+   var x = document.getElementsByClassName('spot');
+   x[1].style.marginBottom=  -3;
+  }
 
 
   render() {
@@ -31,7 +34,7 @@ export class Spot extends Component {
 
     return(
       <div className="spot">
-        <img onClick={ this.cleanSpot.bind(this) } style={{width: 60, height: 60}} src={`${ spot.spot }`}></img>
+        <img onClick={ this.cleanSpot.bind(this) } style={{width: 70, height: 70}} src={`${ spot.spot }`}></img>
       </div>
     )
   }

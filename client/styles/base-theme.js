@@ -7,6 +7,7 @@ import {
   pinkA200,
   pinkA400,
   grey900,
+  green300,
   fullWhite
 } from 'material-ui/styles/colors';
 
@@ -16,7 +17,7 @@ export default {
   fontFamily: sansSerif,
   boxShadow: '1px -1px 5px rgba(0,0,0,0.3)',
   palette: {
-    primary1Color: red500,
+    primary1Color: green300,
     primary2Color: cyan700,
     primary3Color: grey600,
     accent1Color: pinkA200,

@@ -11,6 +11,8 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import NavigationClose from 'material-ui/svg-icons/navigation/close'
 import ActionHome from 'material-ui/svg-icons/action/home';
 import signOutUser from '../actions/sign-out-user'
+import './Header.sass'
+
 
 class Header extends Component {
   renderMenu() {
@@ -51,6 +53,7 @@ class Header extends Component {
     return (
 
       <AppBar
+        className="header"
         title="Wash the Piggy!"
         iconElementLeft={ <IconButton onClick={ this.navigateHome }><ActionHome /></IconButton> }
         iconElementRight={ this.renderMenu() }

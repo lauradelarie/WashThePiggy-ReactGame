@@ -38,18 +38,24 @@ module.exports = function(options) {
 
     // Set up the spots and shuffle them
     const spots = [
-      "https://d30y9cdsu7xlg0.cloudfront.net/png/137806-200.png",
+      "http://www.clipartkid.com/images/272/songs-of-mark-cote-november-2010-MxOVGe-clipart.gif",
       "http://www.clker.com/cliparts/R/F/r/c/n/e/black-splat-hi.png",
-      "http://www.clipartkid.com/images/199/water-splash-clip-art-at-clker-com-vector-clip-art-online-royalty-WG1xZH-clipart.png",
-      "http://www.pngmart.com/files/3/Chocolate-Splash-PNG-Clipart.png",
-      "https://s-media-cache-ak0.pinimg.com/originals/07/01/3f/07013f90f99bdf7bf1883539c17e05aa.jpg",
-      "http://www.clipartkid.com/images/272/mud-clip-art-at-clker-com-vector-clip-art-online-royalty-free-W0E5dR-clipart.png",
-      "http://images.clipartpanda.com/mud-clipart-dirt-splat-clipart-1.jpg",
+      "https://d30y9cdsu7xlg0.cloudfront.net/png/137806-200.png",
+      "http://www.clipartkid.com/images/272/songs-of-mark-cote-november-2010-MxOVGe-clipart.gif",
+      "https://d30y9cdsu7xlg0.cloudfront.net/png/137806-200.png",
       "http://www.clipartkid.com/images/272/songs-of-mark-cote-november-2010-MxOVGe-clipart.gif",
       "https://d30y9cdsu7xlg0.cloudfront.net/png/137806-200.png",
       "http://www.clker.com/cliparts/R/F/r/c/n/e/black-splat-hi.png",
-      "http://www.clipartkid.com/images/199/water-splash-clip-art-at-clker-com-vector-clip-art-online-royalty-WG1xZH-clipart.png",
-      "http://www.pngmart.com/files/3/Chocolate-Splash-PNG-Clipart.png"
+      "http://www.clipartkid.com/images/272/songs-of-mark-cote-november-2010-MxOVGe-clipart.gif",
+      "http://www.clker.com/cliparts/R/F/r/c/n/e/black-splat-hi.png",
+      "https://d30y9cdsu7xlg0.cloudfront.net/png/137806-200.png",
+      "http://www.clipartkid.com/images/272/songs-of-mark-cote-november-2010-MxOVGe-clipart.gif",
+      "https://d30y9cdsu7xlg0.cloudfront.net/png/137806-200.png",
+      "http://www.clipartkid.com/images/272/songs-of-mark-cote-november-2010-MxOVGe-clipart.gif",
+      "http://www.clker.com/cliparts/R/F/r/c/n/e/black-splat-hi.png",
+      "https://d30y9cdsu7xlg0.cloudfront.net/png/137806-200.png",
+      "http://www.clipartkid.com/images/272/songs-of-mark-cote-november-2010-MxOVGe-clipart.gif",
+      "http://www.clker.com/cliparts/R/F/r/c/n/e/black-splat-hi.png"
         ]
       hook.data.spots = spots
       .map((spot) => ({ cleaned: false, spot: spot }))
