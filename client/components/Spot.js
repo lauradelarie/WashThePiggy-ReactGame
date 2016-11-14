@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './spot.sass'
 import saveGame from '../actions/update-game'
+import {GridList, GridTile} from 'material-ui/GridList';
+
 
 export class Spot extends Component {
 

@@ -13,6 +13,7 @@ import saveGame from '../actions/update-game'
 import Paper from 'material-ui/Paper'
 import RaisedButton from 'material-ui/RaisedButton'
 import FlatButton from 'material-ui/FlatButton'
+import {GridList, GridTile} from 'material-ui/GridList';
 
 import './Game.sass'
 
@@ -109,6 +110,7 @@ class Game extends Component {
 // RENDERING THE Game
   render() {
     const { game, currentUser } = this.props
+
     if (!!!game._id) { return null }
 
       if (this.canJoin()) {
@@ -121,9 +123,10 @@ class Game extends Component {
           </Paper>
       )}
 
-        if (game.ended === false) {
-          return(
+    if (game.ended === false) {
+      return(
           <div className="gameAndTimer">
+
               <div className="timer">
                   <p>{ this.state.timerValue }</p>
               </div>
@@ -148,9 +151,9 @@ class Game extends Component {
           )
         }
 
-      // closes render
+
   }
-// class end
+
 }
 Game.propTypes = {
   game: PropTypes.object.isRequired,
